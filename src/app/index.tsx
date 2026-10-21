@@ -9,6 +9,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { COLORS, SPACING } from "../constants/theme";
 import { ExpenseCard } from '../components/ExpenseCard';
 import { Expense } from '../types';
+import { t } from '../i18n/index';
 
 const date = new Date().toISOString();
 
@@ -27,7 +28,7 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.content}>
-        <Text style={styles.title}>Expense Tracker</Text>
+        <Text style={styles.title}>{t('home.title')}</Text>
         <ExpenseCard expense={MOCK} />
       </View>
     </SafeAreaView>

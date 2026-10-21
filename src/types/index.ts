@@ -16,7 +16,6 @@ export type CategoryId =
 
 export type Category = {
   id: CategoryId;
-  label: string;
   emoji: string;
   color: string;
 };

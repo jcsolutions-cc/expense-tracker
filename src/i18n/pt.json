@@ -1,0 +1,24 @@
+{
+  "app": {
+    "name": "Gestor de Despesas"
+  },
+  "home": {
+    "title": "Gestor de Despesas",
+    "emptyTitle": "Sem Despesas ainda",
+    "emptySubTitle": "Toca em + para adicionares a primeira despesa"
+  },
+  "categories": {
+    "food": "Alimentação",
+    "transport": "Transporte",
+    "home": "Casa",
+    "fun": "Lazer",
+    "health": "Saúde",
+    "other": "Outros"
+  },
+  "settings": {
+    "title": "Definições",
+    "language": "Idioma",
+    "english": "English",
+    "portuguese": "Português"
+  }
+}

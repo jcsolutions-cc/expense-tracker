@@ -1,0 +1,24 @@
+{
+  "app": {
+    "name": "Expense Tracker"
+  },
+  "home": {
+    "title": "Expense Tracker",
+    "emptyTitle": "No expenses yet",
+    "emptySubTitle": "Tap + to add your first expense"
+  },
+  "categories": {
+    "food": "Food",
+    "transport": "Transport",
+    "home": "Home",
+    "fun": "Fun",
+    "health": "Health",
+    "other": "Other"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "english": "English",
+    "portuguese": "Português"
+  }
+}

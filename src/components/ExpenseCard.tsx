@@ -3,6 +3,9 @@ import { Expense } from '../types';
 import { getCategory } from '../constants/categories';
 import { formatCurrency, formatDate } from '../utils/format';
 import { COLORS, SPACING, RADIUS } from '../constants/theme';
+import { t, setLanguage } from '../i18n/index';
+
+setLanguage('en');
 
 type Props = { expense: Expense };
 
@@ -15,7 +18,7 @@ export function ExpenseCard({ expense }: Props) {
         <Text style={styles.icon}>{category.emoji}</Text>
       </View>
       <View style={styles.info}>
-        <Text style={styles.label}>{category.label}</Text>
+        <Text style={styles.label}>{t(`categories.${category.id}`)}</Text>
         <Text style={styles.date}>{formatDate(expense.date, 'en-US')}</Text>
       </View>
       <Text style={styles.amount}>-{formatCurrency(expense.amount, 'en-US', 'USD')}</Text>
