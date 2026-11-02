@@ -3,9 +3,7 @@ import { Expense } from '../types';
 import { getCategory } from '../constants/categories';
 import { formatCurrency, formatDate } from '../utils/format';
 import { COLORS, SPACING, RADIUS } from '../constants/theme';
-import { t, setLanguage } from '../i18n/index';
-
-setLanguage('en');
+import { t } from '../i18n/index';
 
 type Props = { expense: Expense };
 

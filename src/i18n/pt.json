@@ -2,10 +2,43 @@
   "app": {
     "name": "Gestor de Despesas"
   },
+  "tabs": {
+    "expenses": "Despesas",
+    "summary": "Resumo",
+    "settings": "Definições"
+  },
+  "common": {
+    "amount": "Valor",
+    "category": "Categoria",
+    "date": "Data",
+    "note": "Nota",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "total": "Total",
+    "language": "Idioma",
+    "english": "English",
+    "portuguese": "Português",
+    "yes": "Sim",
+    "no": "Não",
+    "ok": "OK",
+    "back": "Voltar",
+    "confirm": "Confirmar"
+  },
   "home": {
     "title": "Gestor de Despesas",
-    "emptyTitle": "Sem Despesas ainda",
-    "emptySubTitle": "Toca em + para adicionares a primeira despesa"
+    "addButton": "Adicionar despesa",
+    "filteredTotal": "Total filtrado"
+  },
+  "form": {
+    "title": "Nova despesa",
+    "titleEdit": "Editar despesa",
+    "amountPlaceholder": "0,00",
+    "notePlaceholder": "Opcional",
+    "errorAmount": "Introduz um valor válido",
+    "errorCategory": "Escolhe uma categoria",
+    "errorDate": "Escolhe uma data válida"
   },
   "categories": {
     "food": "Alimentação",
@@ -15,10 +48,45 @@
     "health": "Saúde",
     "other": "Outros"
   },
+  "filters": {
+    "title": "Filtros",
+    "dateFrom": "De",
+    "dateTo": "Até",
+    "all": "Todas",
+    "clear": "Limpar filtros",
+    "apply": "Aplicar"
+  },
+  "details": {
+    "title": "Detalhes da despesa",
+    "createdAt": "Criada em"
+  },
+  "delete": {
+    "title": "Eliminar despesa",
+    "message": "Tens a certeza que queres eliminar esta despesa?"
+  },
+  "summary": {
+    "title": "Resumo",
+    "period": "Período",
+    "week": "Esta semana",
+    "month": "Este mês",
+    "allTime": "Sempre",
+    "average": "Média por dia",
+    "count": "Despesas",
+    "byCategory": "Por categoria",
+    "chart": "Gráfico de gastos"
+  },
   "settings": {
     "title": "Definições",
-    "language": "Idioma",
-    "english": "English",
-    "portuguese": "Português"
+    "currency": "Moeda",
+    "reset": "Apagar todos os dados",
+    "resetConfirm": "Isto vai eliminar todas as despesas. Continuar?",
+    "about": "Sobre",
+    "version": "Versão"
+  },
+  "empty": {
+    "expensesTitle": "Sem despesas ainda",
+    "expensesSubtitle": "Adiciona a tua primeira despesa para começar",
+    "filteredTitle": "Nenhuma despesa corresponde aos filtros",
+    "filteredSubtitle": "Tenta alterar os filtros"
   }
 }

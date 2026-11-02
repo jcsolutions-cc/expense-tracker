@@ -2,10 +2,43 @@
   "app": {
     "name": "Expense Tracker"
   },
+  "tabs": {
+    "expenses": "Expenses",
+    "summary": "Summary",
+    "settings": "Settings"
+  },
+  "common": {
+    "amount": "Amount",
+    "category": "Category",
+    "date": "Date",
+    "note": "Note",
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "total": "Total",
+    "language": "Language",
+    "english": "English",
+    "portuguese": "Português",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK",
+    "back": "Back",
+    "confirm": "Confirm"
+  },
   "home": {
     "title": "Expense Tracker",
-    "emptyTitle": "No expenses yet",
-    "emptySubTitle": "Tap + to add your first expense"
+    "addButton": "Add expense",
+    "filteredTotal": "Filtered total"
+  },
+  "form": {
+    "title": "New expense",
+    "titleEdit": "Edit expense",
+    "amountPlaceholder": "0.00",
+    "notePlaceholder": "Optional",
+    "errorAmount": "Enter a valid amount",
+    "errorCategory": "Pick a category",
+    "errorDate": "Pick a valid date"
   },
   "categories": {
     "food": "Food",
@@ -15,10 +48,45 @@
     "health": "Health",
     "other": "Other"
   },
+  "filters": {
+    "title": "Filters",
+    "dateFrom": "From",
+    "dateTo": "To",
+    "all": "All",
+    "clear": "Clear filters",
+    "apply": "Apply"
+  },
+  "details": {
+    "title": "Expense details",
+    "createdAt": "Created at"
+  },
+  "delete": {
+    "title": "Delete expense",
+    "message": "Are you sure you want to delete this expense?"
+  },
+  "summary": {
+    "title": "Summary",
+    "period": "Period",
+    "week": "This week",
+    "month": "This month",
+    "allTime": "All time",
+    "average": "Average per day",
+    "count": "Expenses",
+    "byCategory": "By category",
+    "chart": "Spending chart"
+  },
   "settings": {
     "title": "Settings",
-    "language": "Language",
-    "english": "English",
-    "portuguese": "Português"
+    "currency": "Currency",
+    "reset": "Reset all data",
+    "resetConfirm": "This will delete every expense. Continue?",
+    "about": "About",
+    "version": "Version"
+  },
+  "empty": {
+    "expensesTitle": "No expenses yet",
+    "expensesSubtitle": "Add your first expense to start tracking",
+    "filteredTitle": "No expenses match your filters",
+    "filteredSubtitle": "Try changing the filters"
   }
 }

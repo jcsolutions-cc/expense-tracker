@@ -3,13 +3,16 @@
 
 
 
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Ionicons } from '@react-native-vector-icons/ionicons';
+import { useRouter } from 'expo-router';
 
-import { COLORS, SPACING } from "../constants/theme";
+import { COLORS, RADIUS, SPACING } from "../constants/theme";
 import { ExpenseCard } from '../components/ExpenseCard';
 import { Expense } from '../types';
 import { t } from '../i18n/index';
+import { useLanguage } from '../i18n/LanguageProvider';
 
 const date = new Date().toISOString();
 
@@ -25,10 +28,22 @@ const MOCK: Expense = {
 };
 
 export default function HomeScreen() {
+  const router = useRouter();
+  useLanguage();
+
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.content}>
-        <Text style={styles.title}>{t('home.title')}</Text>
+        <View style={styles.header}>
+          <Text style={styles.title}>{t('home.title')}</Text>
+          <TouchableOpacity
+            onPress={() => router.push('./language')}
+            style={styles.langBtn}
+            activeOpacity={0.8}
+          >
+            <Ionicons name="language" size={22} color={COLORS.text} />
+          </TouchableOpacity>
+        </View>
         <ExpenseCard expense={MOCK} />
       </View>
     </SafeAreaView>
@@ -39,10 +54,25 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: COLORS.bg },
   content: { flex: 1, padding: SPACING.lg, gap: SPACING.md },
-
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: SPACING.sm,
+  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     color: COLORS.text,
+  },
+  langBtn: {
+    width: 40,
+    height: 40,
+    borderRadius: RADIUS.sm,
+    backgroundColor: COLORS.surface,
+    alignItems: 'center',
+    borderColor: COLORS.border,
+    justifyContent: 'center',
+    borderWidth: 1,
   },
 });
