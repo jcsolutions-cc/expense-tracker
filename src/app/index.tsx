@@ -2,7 +2,7 @@
 
 
 
-
+import { useState } from "react"; 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from '@react-native-vector-icons/ionicons';
@@ -13,6 +13,10 @@ import { ExpenseCard } from '../components/ExpenseCard';
 import { Expense } from '../types';
 import { t } from '../i18n/index';
 import { useLanguage } from '../i18n/LanguageProvider';
+
+import { Button } from '../components/ui/Button';
+import { CategoryPicker } from '../components/CategoryPicker';
+import { CategoryId } from '../types/index';
 
 const date = new Date().toISOString();
 
@@ -29,6 +33,7 @@ const MOCK: Expense = {
 
 export default function HomeScreen() {
   const router = useRouter();
+  const [cat, setCat] = useState<CategoryId | null>(null);
   useLanguage();
 
   return (
@@ -45,6 +50,9 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View>
         <ExpenseCard expense={MOCK} />
+        <Button label="Primary" onPress={() => { }} />
+        <Button label="Ghost" onPress={() => { }} variant="ghost" />
+        <CategoryPicker value={cat} onChange={setCat} />
       </View>
     </SafeAreaView>
 
