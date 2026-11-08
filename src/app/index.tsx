@@ -43,16 +43,19 @@ export default function HomeScreen() {
           <Text style={styles.title}>{t('home.title')}</Text>
           <TouchableOpacity
             onPress={() => router.push('./language')}
-            style={styles.langBtn}
+            style={styles.iconBtn}
             activeOpacity={0.8}
           >
             <Ionicons name="language" size={22} color={COLORS.text} />
           </TouchableOpacity>
         </View>
-        <ExpenseCard expense={MOCK} />
-        <Button label="Primary" onPress={() => { }} />
-        <Button label="Ghost" onPress={() => { }} variant="ghost" />
-        <CategoryPicker value={cat} onChange={setCat} />
+        <TouchableOpacity
+          onPress={() => router.push('/expense/new')}
+          style={styles.iconBtn}
+          activeOpacity={0.8}
+        >
+          <Ionicons name="add" size={22} color={COLORS.text} />
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
 
@@ -73,7 +76,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: COLORS.text,
   },
-  langBtn: {
+  iconBtn: {
     width: 40,
     height: 40,
     borderRadius: RADIUS.sm,

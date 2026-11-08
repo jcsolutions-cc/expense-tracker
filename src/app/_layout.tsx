@@ -21,6 +21,7 @@ export default function RootLayout() {
         >
           <Stack.Screen name="index" options={{ headerShown: false }} />
           <Stack.Screen name="language" options={{ presentation: 'modal', headerShown: false }} />
+          <Stack.Screen name="expense/new" options={{ presentation: "modal", title: '' }} />
         </Stack>
       </LanguageProvider>
     </SafeAreaProvider>
