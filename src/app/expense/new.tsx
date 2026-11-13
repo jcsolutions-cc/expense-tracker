@@ -5,6 +5,9 @@ import {
   View, Text, TextInput, StyleSheet, ScrollView,
   KeyboardAvoidingView, Platform,
 } from 'react-native';
+
+import { useRouter } from 'expo-router';
+
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { COLORS, SPACING, RADIUS } from '../../constants/theme';
@@ -14,9 +17,12 @@ import { CategoryId } from '../../types/index';
 import { t } from '../../i18n/index';
 import { useLanguage } from '../../i18n/LanguageProvider';
 import { formatDate } from '@/utils/format';
+import { useExpenses } from '@/expenses/ExpensesProvider';
 
 export default function NewExpenseScreen() {
   useLanguage();
+  const router = useRouter();
+  const { addExpense } = useExpenses();
 
   const [amount, setAmount] = useState('');
   const [category, setCategory] = useState<CategoryId | null>(null);

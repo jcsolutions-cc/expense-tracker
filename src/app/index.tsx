@@ -17,6 +17,7 @@ import { useLanguage } from '../i18n/LanguageProvider';
 import { Button } from '../components/ui/Button';
 import { CategoryPicker } from '../components/CategoryPicker';
 import { CategoryId } from '../types/index';
+import { useExpenses } from '../expenses/ExpensesProvider';
 
 const date = new Date().toISOString();
 
@@ -36,6 +37,8 @@ export default function HomeScreen() {
   const [cat, setCat] = useState<CategoryId | null>(null);
   useLanguage();
 
+  const { expenses } = useExpenses();
+
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.content}>
@@ -49,14 +52,22 @@ export default function HomeScreen() {
             <Ionicons name="language" size={22} color={COLORS.text} />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity
-          onPress={() => router.push('/expense/new')}
-          style={styles.iconBtn}
-          activeOpacity={0.8}
-        >
-          <Ionicons name="add" size={22} color={COLORS.text} />
-        </TouchableOpacity>
+
+        <View style={styles.counterBox}>
+          <Text style={styles.counterText}>
+            {expenses.length} {t('summary.count').toLowerCase()}
+          </Text>
+        </View>
+
+        <ExpenseCard expense={MOCK} />
       </View>
+      <TouchableOpacity
+        onPress={() => router.push('/expense/new')}
+        style={styles.fab}
+        activeOpacity={0.85}
+      >
+        <Ionicons name="add" size={22} color={COLORS.text} />
+      </TouchableOpacity>
     </SafeAreaView>
 
   );
@@ -85,5 +96,30 @@ const styles = StyleSheet.create({
     borderColor: COLORS.border,
     justifyContent: 'center',
     borderWidth: 1,
+  },
+  counterBox: {
+    backgroundColor: COLORS.surface,
+    borderRadius: RADIUS.md,
+    padding: SPACING.md,
+    borderWidth: 1,
+    borderColor: COLORS.border,
+    alignItems: 'center'
+  },
+  counterText: {
+    color: COLORS.text,
+    fontSize: 15,
+    fontWeight: '600',
+  },
+  fab: {
+    position: 'absolute',
+    right: SPACING.lg,
+    bottom: SPACING.lg,
+    width: 56,
+    height: 56,
+    borderRadius: RADIUS.lg,
+    backgroundColor: COLORS.primary,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 6,
   },
 });

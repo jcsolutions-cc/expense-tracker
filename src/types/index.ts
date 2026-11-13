@@ -8,8 +8,10 @@ export type Expense = {
   note?: string;
   date: string; // ISO string
   createAt: string; // ISO string
-  updateAt: string; //Future
+  updateAt?: string; // ISO string -> future
 };
+
+export type NewExpense = Omit<Expense, 'id' | 'createAt' | 'updateAt'>;
 
 export type CategoryId =
   | 'food' | 'transport' | 'home' | 'fun' | 'health' | 'other';
