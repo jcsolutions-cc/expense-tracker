@@ -3,10 +3,10 @@
 
 
 import { useState } from "react"; 'react';
-import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, View, StyleSheet, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from '@react-native-vector-icons/ionicons';
-import { useRouter } from 'expo-router';
+import { Color, useRouter } from 'expo-router';
 
 import { COLORS, RADIUS, SPACING } from "../constants/theme";
 import { ExpenseCard } from '../components/ExpenseCard';
@@ -20,17 +20,6 @@ import { CategoryId } from '../types/index';
 import { useExpenses } from '../expenses/ExpensesProvider';
 
 const date = new Date().toISOString();
-
-const MOCK: Expense = {
-  id: 'demo',
-  amount: 24.9,
-  category: 'food',
-  note: 'Lunch',
-  date: date,
-  createAt: date,
-  updateAt: date,
-
-};
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -53,13 +42,24 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View>
 
-        <View style={styles.counterBox}>
-          <Text style={styles.counterText}>
-            {expenses.length} {t('summary.count').toLowerCase()}
-          </Text>
-        </View>
+        {expenses.length === 0 ? (
+          <View style={styles.empty}>
+            <Text style={styles.emptyEmoji}>💰</Text>
+            <Text style={styles.emptyTitle}>{t('empty.expensesTitle')}</Text>
+            <Text style={styles.emptySubTitle}>{t('empty.expensesSubtitle')}</Text>
+          </View>
+        ) : (
+          <FlatList
+            data={expenses}
+            keyExtractor={(item) => item.id}
+            renderItem={({ item }) => <ExpenseCard expense={item} />}
+            contentContainerStyle={styles.list}
+            ItemSeparatorComponent={() => <View style={{ height: SPACING.sm }} />}
+            initialNumToRender={10}
+            removeClippedSubviews={false}
+          />
+        )}
 
-        <ExpenseCard expense={MOCK} />
       </View>
       <TouchableOpacity
         onPress={() => router.push('/expense/new')}
@@ -122,4 +122,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     elevation: 6,
   },
+  empty: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: SPACING.lg,
+  },
+  emptyEmoji: { fontSize: 56, marginBottom: SPACING.md },
+  emptySubTitle: {
+    fontSize: 14,
+    color: COLORS.textMuted,
+    textAlign: 'center',
+    marginTop: SPACING.xs,
+  },
+  emptyTitle: {
+    fontSize: 18,
+    fontWeight: '600',
+    color: COLORS.text,
+    textAlign: 'center',
+  },
+  list: { paddingBottom: 100 },
 });

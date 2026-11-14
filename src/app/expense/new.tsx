@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import {
   View, Text, TextInput, StyleSheet, ScrollView,
-  KeyboardAvoidingView, Platform,
+  KeyboardAvoidingView, Platform, Alert,
 } from 'react-native';
 
 import { useRouter } from 'expo-router';
@@ -19,6 +19,10 @@ import { useLanguage } from '../../i18n/LanguageProvider';
 import { formatDate } from '@/utils/format';
 import { useExpenses } from '@/expenses/ExpensesProvider';
 
+const parsed = (value: string): number => {
+  return parseFloat(value.replace(',', '.'));
+};
+
 export default function NewExpenseScreen() {
   useLanguage();
   const router = useRouter();
@@ -29,12 +33,38 @@ export default function NewExpenseScreen() {
   const [note, setNote] = useState('');
   const [date] = useState(new Date().toISOString());
 
+  const validate = (): boolean => {
+    const parsedValue = parsed(amount);
+
+    if (isNaN(parsedValue) || parsedValue <= 0) {
+      Alert.alert(t('form.errorAmount'));
+      return false;
+    }
+
+    if (!category) {
+      Alert.alert(t('form.errorCategory'));
+      return false;
+    }
+
+    return true;
+  };
   const handleSave = () => {
-    console.log({ amount, category, note, date });
+    if (!validate()) {
+      return;
+    }
+
+    addExpense({
+      amount: parsed(amount),
+      category: category!,
+      note: note.trim() || undefined,
+      date
+    });
+
+    router.back();
   };
 
   const handleCancel = () => {
-    console.log("no implement");
+    router.back();
   };
 
   return (
