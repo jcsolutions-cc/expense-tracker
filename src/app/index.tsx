@@ -2,7 +2,7 @@
 
 
 
-import { useState } from "react"; 'react';
+import { useState, useMemo } from "react";
 import { Text, View, StyleSheet, TouchableOpacity, FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons } from '@react-native-vector-icons/ionicons';
@@ -10,6 +10,7 @@ import { Color, useRouter } from 'expo-router';
 
 import { COLORS, RADIUS, SPACING } from "../constants/theme";
 import { ExpenseCard } from '../components/ExpenseCard';
+import { TotalCard } from '../components/TotalCard';
 import { Expense } from '../types';
 import { t } from '../i18n/index';
 import { useLanguage } from '../i18n/LanguageProvider';
@@ -28,6 +29,10 @@ export default function HomeScreen() {
 
   const { expenses } = useExpenses();
 
+  const total = useMemo(() => {
+    return expenses.reduce((sum, e) => { return sum + e.amount }, 0);
+  }, [expenses])
+
   return (
     <SafeAreaView style={styles.container} edges={['top']}>
       <View style={styles.content}>
@@ -41,6 +46,8 @@ export default function HomeScreen() {
             <Ionicons name="language" size={22} color={COLORS.text} />
           </TouchableOpacity>
         </View>
+
+        {expenses.length > 0 && <TotalCard total={total} />}
 
         {expenses.length === 0 ? (
           <View style={styles.empty}>

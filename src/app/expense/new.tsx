@@ -85,7 +85,7 @@ export default function NewExpenseScreen() {
 
           <Text style={styles.label}>{t('common.date')}</Text>
           <View style={styles.dateBox}>
-            <Text style={styles.dateText}>{date}</Text>
+            <Text style={styles.dateText}>{formatDate(date, 'us')}</Text>
           </View>
 
           <Text style={styles.label}>{t('common.category')}</Text>

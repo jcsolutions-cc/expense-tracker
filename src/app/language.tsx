@@ -50,7 +50,7 @@ export default function LanguageScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: COLORS.bg },
-  content: { padding: SPACING.lg, gap: SPACING.sm },
+  content: { padding: SPACING.lg, gap: SPACING.md },
   heading: {
     color: COLORS.text,
     fontSize: 18,
